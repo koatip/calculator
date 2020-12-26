@@ -22,6 +22,7 @@ function calculate() {
     if (!str.match(/^[0-9.]+([+x÷-][0-9.]+)+$/)) {
         return str = 'Error';
     }
+    str += '+'; // legyen a str végén még egy operátor, hogy végezze el a számítást
     let num1 = num2 = operator = '';
     for (let i = 0; i < str.length; i++) {
         const char = str[i];
@@ -55,23 +56,6 @@ function calculate() {
                 num2 += char;
             }
         }
-    }
-    switch (operator) {
-        case '+':
-            num1 = +num1 + +num2;
-            break;
-        case '-':
-            num1 = num1 - num2;
-            break;
-        case 'x':
-            num1 = num1 * num2;
-            break;
-        case '÷':
-            num1 = num1 / num2;
-            break;
-    }
-    if (isNaN(num1)) {
-        return str = 'Error';
     }
     return str = num1;
 }
